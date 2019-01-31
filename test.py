@@ -44,6 +44,6 @@ if __name__ == "__main__":
         theta = 2 * np.arccos(d) * 180/math.pi
         error_x = np.linalg.norm(pose_x-predicted_x)
         results[i,:] = [error_x,theta]
-        print 'Iteration:  ', i, '  Error XYZ (m):  ', error_x, '  Error Q (degrees):  ', theta
+        print('Iteration:  ', i, '  Error XYZ (m):  ', error_x, '  Error Q (degrees):  ', theta)
     median_result = np.median(results,axis=0)
     print('Median error ', median_result[0], 'm  and ', median_result[1], 'degrees.')
