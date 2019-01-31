@@ -4,7 +4,7 @@ from keras.layers import Input, Dense, Convolution2D
 from keras.layers import MaxPooling2D, AveragePooling2D
 from keras.layers import ZeroPadding2D, Dropout, Flatten
 from keras.layers import merge, Reshape, Activation, BatchNormalization
-from keras.utils.np_utils import convert_kernel
+from keras.utils.conv_utils import convert_kernel
 from keras import backend as K
 from keras.models import Model
 import tensorflow as tf
@@ -78,7 +78,7 @@ def create_posenet(weights_path=None, tune=False):
         icp1_out0 = Convolution2D(64,1,1,border_mode='same',activation='relu',name='icp1_out0')(pool2)
 
         
-        icp2_in = merge([icp1_out0, icp1_out1, icp1_out2, icp1_out3],mode='concat',concat_axis=3,name='icp2_in')
+        icp2_in = merge.concatenate([icp1_out0, icp1_out1, icp1_out2, icp1_out3],axis=3,name='icp2_in')
 
 
         
@@ -103,7 +103,7 @@ def create_posenet(weights_path=None, tune=False):
         icp2_out0 = Convolution2D(128,1,1,border_mode='same',activation='relu',name='icp2_out0')(icp2_in)
 
         
-        icp2_out = merge([icp2_out0, icp2_out1, icp2_out2, icp2_out3],mode='concat',concat_axis=3,name='icp2_out')
+        icp2_out = merge.concatenate([icp2_out0, icp2_out1, icp2_out2, icp2_out3],axis=3,name='icp2_out')
 
 
 
@@ -130,7 +130,7 @@ def create_posenet(weights_path=None, tune=False):
         icp3_out0 = Convolution2D(192,1,1,border_mode='same',activation='relu',name='icp3_out0')(icp3_in)
         
         
-        icp3_out = merge([icp3_out0, icp3_out1, icp3_out2, icp3_out3],mode='concat',concat_axis=3,name='icp3_out')
+        icp3_out = merge.concatenate([icp3_out0, icp3_out1, icp3_out2, icp3_out3],axis=3,name='icp3_out')
         
 
 
@@ -173,7 +173,7 @@ def create_posenet(weights_path=None, tune=False):
         icp4_out0 = Convolution2D(160,1,1,border_mode='same',activation='relu',name='icp4_out0')(icp3_out)
 
         
-        icp4_out = merge([icp4_out0, icp4_out1, icp4_out2, icp4_out3],mode='concat',concat_axis=3,name='icp4_out')
+        icp4_out = merge.concatenate([icp4_out0, icp4_out1, icp4_out2, icp4_out3],axis=3,name='icp4_out')
 
 
 
@@ -198,7 +198,7 @@ def create_posenet(weights_path=None, tune=False):
         icp5_out0 = Convolution2D(128,1,1,border_mode='same',activation='relu',name='icp5_out0')(icp4_out)
 
         
-        icp5_out = merge([icp5_out0, icp5_out1, icp5_out2, icp5_out3],mode='concat',concat_axis=3,name='icp5_out')
+        icp5_out = merge.concatenate([icp5_out0, icp5_out1, icp5_out2, icp5_out3],axis=3,name='icp5_out')
 
 
 
@@ -223,7 +223,7 @@ def create_posenet(weights_path=None, tune=False):
         icp6_out0 = Convolution2D(112,1,1,border_mode='same',activation='relu',name='icp6_out0')(icp5_out)
 
         
-        icp6_out = merge([icp6_out0, icp6_out1, icp6_out2, icp6_out3],mode='concat',concat_axis=3,name='icp6_out')
+        icp6_out = merge.concatenate([icp6_out0, icp6_out1, icp6_out2, icp6_out3],axis=3,name='icp6_out')
         
 
 
@@ -266,7 +266,7 @@ def create_posenet(weights_path=None, tune=False):
         icp7_out0 = Convolution2D(256,1,1,border_mode='same',activation='relu',name='icp7_out0')(icp6_out)
         
 
-        icp7_out = merge([icp7_out0, icp7_out1, icp7_out2, icp7_out3],mode='concat',concat_axis=3,name='icp7_out')
+        icp7_out = merge.concatenate([icp7_out0, icp7_out1, icp7_out2, icp7_out3],axis=3,name='icp7_out')
 
         
         
@@ -292,7 +292,7 @@ def create_posenet(weights_path=None, tune=False):
         
         icp8_out0 = Convolution2D(256,1,1,border_mode='same',activation='relu',name='icp8_out0')(icp8_in)
         
-        icp8_out = merge([icp8_out0, icp8_out1, icp8_out2, icp8_out3],mode='concat',concat_axis=3,name='icp8_out')
+        icp8_out = merge.concatenate([icp8_out0, icp8_out1, icp8_out2, icp8_out3],axis=3,name='icp8_out')
         
 
 
@@ -316,7 +316,7 @@ def create_posenet(weights_path=None, tune=False):
         
         icp9_out0 = Convolution2D(384,1,1,border_mode='same',activation='relu',name='icp9_out0')(icp8_out)
         
-        icp9_out = merge([icp9_out0, icp9_out1, icp9_out2, icp9_out3],mode='concat',concat_axis=3,name='icp9_out')
+        icp9_out = merge.concatenate([icp9_out0, icp9_out1, icp9_out2, icp9_out3],axis=3,name='icp9_out')
         
         
 

@@ -1,3 +1,6 @@
 *.zip
 keras_posenet_weights/
 KingsCollege/
+trained_weights.h5
+posenet.npy
+__pycache__/

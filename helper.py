@@ -23,8 +23,8 @@ def centeredCrop(img, output_side_length):
 		new_height = output_side_length * height / width
 	else:
 		new_width = output_side_length * width / height
-	height_offset = (new_height - output_side_length) / 2
-	width_offset = (new_width - output_side_length) / 2
+	height_offset = int((new_height - output_side_length) / 2)
+	width_offset = int((new_width - output_side_length) / 2)
 	cropped_img = img[height_offset:height_offset + output_side_length,
 	                          width_offset:width_offset + output_side_length]
 	return cropped_img
